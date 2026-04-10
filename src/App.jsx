@@ -69,8 +69,7 @@ export default function App() {
       <header className="fixed top-0 left-0 right-0 z-50 bg-cream/95 backdrop-blur-md border-b border-brown/5">
         <div className="max-w-6xl mx-auto px-4 h-14 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <span className="text-coral font-extrabold text-lg">고디</span>
-            <span className="text-brown/40 text-xs hidden sm:inline">| 감사가 삶이 되는 순간</span>
+            <span className="text-coral font-extrabold text-sm sm:text-base">지혜실천가 | 고마워디자이너 | 최덕분</span>
           </div>
           <a href="https://naver.me/5k73pcML" target="_blank" rel="noopener noreferrer"
             className="bg-coral hover:bg-coral-deep text-white text-sm font-bold px-4 py-2 rounded-full transition-all duration-300 hover:scale-105">
@@ -145,7 +144,7 @@ export default function App() {
           <div className="space-y-12">
             {[
               { phase: '혼돈', emoji: '🌊', title: '700일의 감사일기, 그런데 이혼 통보', desc: '감사일기를 700일이나 썼는데, 부부관계는 벼랑 끝이었습니다. 서로에 대한 불만과 무시가 쌓여 두 번째 이혼 통보를 받았습니다.' },
-              { phase: '선택', emoji: '✉️', title: '남편에게 100일 고마워 편지를 쓰기로', desc: '도망 대신 선택했습니다. 매일 남편에게 "고마워" 편지를 쓰기로. 43일째까지 아무런 반응도 없었습니다. 그래도 멈추지 않았습니다.' },
+              { phase: '선택', emoji: '✉️', title: '남편에게 100일 고마워 편지를 쓰기로', desc: '도망 대신 선택했습니다. 매일 남편에게 "고마워" 편지를 쓰기로. 43일째까지 아무런 반응도 없었습니다. 그래도 멈추지 않았습니다.', img: `${B}images/letter.webp` },
               { phase: '변화', emoji: '🌱', title: '닫혀있던 마음의 문이 열리기 시작', desc: '어느 날부터 조금씩, 닫혀있던 마음의 문이 열리며 관계가 회복되어 갔습니다. 진정한 감사는 감정을 누르는 게 아니라, 감정을 안아준 뒤 시작되는 것이었습니다.' },
               { phase: '지금', emoji: '☀️', title: '감사가 삶이 된 11년, 고마워컴퍼니 대표', desc: '46세에 시작한 감사일기가 3,142일이 되었습니다. 50세에 고마워디자이너, 52세에 고마워컴퍼니. 포기하지 않고 감사일기를 계속 쓴 것, 그것이 지금의 저를 만들었습니다.' },
             ].map((item, i) => (
@@ -155,10 +154,15 @@ export default function App() {
                     <div className="w-12 h-12 rounded-full bg-coral/10 flex items-center justify-center text-2xl">{item.emoji}</div>
                     {i < 3 && <div className="w-px flex-1 bg-coral/10 mt-2" />}
                   </div>
-                  <div className="pb-2">
+                  <div className="pb-2 flex-1">
                     <span className="text-coral text-xs font-bold tracking-widest">{item.phase}</span>
                     <h3 className="text-lg sm:text-xl font-bold text-brown mt-1 mb-2">{item.title}</h3>
                     <p className="text-brown/60 text-sm sm:text-base leading-relaxed">{item.desc}</p>
+                    {item.img && (
+                      <div className="mt-4 rounded-xl overflow-hidden shadow-md border border-coral/10 max-w-sm">
+                        <img src={item.img} alt="고마워 편지" className="w-full" />
+                      </div>
+                    )}
                   </div>
                 </div>
               </FadeIn>
@@ -344,6 +348,71 @@ export default function App() {
             ))}
           </div>
         </div>
+      </section>
+
+      {/* ━━━━━━ 만남 캐러셀 ━━━━━━ */}
+      <section className="py-12 bg-cream overflow-hidden">
+        <FadeIn>
+          <p className="text-coral font-semibold text-sm tracking-widest uppercase mb-3 text-center">Connections</p>
+          <h2 className="text-xl sm:text-2xl font-extrabold text-brown text-center mb-8">
+            고디를 만난 <span className="text-coral">따뜻한 순간들</span>
+          </h2>
+        </FadeIn>
+        {(() => {
+          const PEOPLE = [
+            '670774875_17952699786120427_2798390370475125361_n.webp',
+            '576122854_17928387036120427_3518527098537720814_n.webp',
+            '585864882_17929194666120427_1587687432389029715_n.webp',
+            '589842319_17934934488120427_7841180664141857726_n.jpg',
+            '591149430_17930431749120427_1457911759718292691_n.webp',
+            '591165221_17930993643120427_4303427703975472482_n.webp',
+            '602349078_17932559853120427_9187523041995478616_n.webp',
+            '604232581_17932559874120427_7043911489295609441_n.webp',
+            '608826534_17933691555120427_3788803990942291_n.webp',
+            '615387520_17935505529120427_2905986761154887756_n.webp',
+            '615927568_17935373967120427_5710623532649275851_n.webp',
+            '616008438_17935692471120427_8963250065464303490_n.webp',
+            '616606147_17935595655120427_5086319584271407352_n.webp',
+            '617108051_17935692420120427_2970732349831499829_n.webp',
+            '621439285_17936847282120427_7618758626256255538_n.webp',
+            '621681506_17936994891120427_1524954944991549302_n.webp',
+            '621808409_17936941908120427_8395706318316080208_n.webp',
+            '622572685_17937666870120427_8438263965561589324_n.webp',
+            '625632633_17938929594120427_3436209314009429547_n.webp',
+            '628272276_17939306181120427_7162006648806852424_n.webp',
+            '629217522_17939129523120427_7219815216839445007_n.webp',
+            '632477619_17940002916120427_6241562939872697993_n.webp',
+            '640356113_17943472398120427_8890311830385377399_n.webp',
+            '640418972_17943940890120427_7517112464131876106_n.webp',
+            '643733982_17944505856120427_1457825128167569537_n.jpg',
+            '649228248_17946639849120112_4884412314898130719_n.webp',
+            '649228725_17946639852120112_6781636476145087361_n.webp',
+            '649231270_17945572791120427_6779638507155372427_n.webp',
+            '652041983_17946928170120427_5474771324274010476_n.webp',
+            '652080838_17947076691120427_8322679435984710247_n.webp',
+            '653400598_17947652187120427_6996024128545982575_n.webp',
+            '655125682_17947904676120427_2953277670796475106_n.webp',
+            '669757909_17952699855120427_7477514611302073163_n.webp',
+          ]
+          const doubled = [...PEOPLE, ...PEOPLE]
+          return (
+            <div className="relative">
+              <motion.div
+                className="flex gap-3"
+                animate={{ x: [0, -(PEOPLE.length * 164)] }}
+                transition={{ duration: PEOPLE.length * 3, repeat: Infinity, ease: 'linear' }}
+              >
+                {doubled.map((p, i) => (
+                  <div key={i} className="flex-shrink-0 w-40 h-40 rounded-xl overflow-hidden shadow-md">
+                    <img src={`${B}images/people/${p}`} alt="고디를 만난 사람" className="w-full h-full object-cover" loading="lazy" />
+                  </div>
+                ))}
+              </motion.div>
+              <div className="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-cream to-transparent pointer-events-none" />
+              <div className="absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-cream to-transparent pointer-events-none" />
+            </div>
+          )
+        })()}
       </section>
 
       {/* ━━━━━━ 철학 (필사의 힘) ━━━━━━ */}
