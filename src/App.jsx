@@ -1,8 +1,55 @@
-import { useRef, useState, useEffect } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { useRef, useState, useEffect, useCallback } from 'react'
+import { motion, useInView, AnimatePresence } from 'framer-motion'
 import './index.css'
 
 const B = import.meta.env.BASE_URL
+
+/* ── 하트 파티클 ── */
+function HeartTrail() {
+  const [hearts, setHearts] = useState([])
+  const throttle = useRef(false)
+  const HEARTS = ['❤️', '🧡', '💛', '💗', '💕', '♥️']
+
+  const handleMove = useCallback((e) => {
+    if (throttle.current) return
+    throttle.current = true
+    setTimeout(() => { throttle.current = false }, 80)
+
+    const id = Date.now() + Math.random()
+    const x = e.clientX + (Math.random() - 0.5) * 20
+    const y = e.clientY + (Math.random() - 0.5) * 20
+    const emoji = HEARTS[Math.floor(Math.random() * HEARTS.length)]
+    const size = 10 + Math.random() * 14
+
+    setHearts(prev => [...prev.slice(-15), { id, x, y, emoji, size }])
+  }, [])
+
+  useEffect(() => {
+    window.addEventListener('mousemove', handleMove)
+    return () => window.removeEventListener('mousemove', handleMove)
+  }, [handleMove])
+
+  return (
+    <div className="fixed inset-0 pointer-events-none z-[9998]">
+      <AnimatePresence>
+        {hearts.map(h => (
+          <motion.div
+            key={h.id}
+            className="absolute select-none"
+            style={{ left: h.x, top: h.y, fontSize: h.size }}
+            initial={{ opacity: 0.8, scale: 0.5, y: 0 }}
+            animate={{ opacity: 0, scale: 1.2, y: -60, x: (Math.random() - 0.5) * 40 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+            onAnimationComplete={() => setHearts(prev => prev.filter(p => p.id !== h.id))}
+          >
+            {h.emoji}
+          </motion.div>
+        ))}
+      </AnimatePresence>
+    </div>
+  )
+}
 
 /* ── 애니메이션 ── */
 function FadeIn({ children, className = '', delay = 0 }) {
@@ -64,6 +111,7 @@ const IMG = {
 export default function App() {
   return (
     <div className="min-h-screen bg-cream text-brown font-[var(--font-family-pretendard)]">
+      <HeartTrail />
 
       {/* ━━━━━━ HEADER ━━━━━━ */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-cream/95 backdrop-blur-md border-b border-brown/5">
