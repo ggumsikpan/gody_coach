@@ -569,7 +569,7 @@ export default function App() {
           <a href="https://naver.me/FkLH0dnE" target="_blank" rel="noopener noreferrer" className="text-white/30 text-xs mb-4 inline-block hover:text-white/50 transition-colors">고마워컴퍼니 | 경기도 화성시 동탄 📍</a>
           <div className="border-t border-white/5 pt-4">
             <p className="text-white/40 text-xs">&copy; 2026 고마워컴퍼니. All rights reserved.</p>
-            <p className="text-white/30 text-xs mt-1">랜딩페이지 제작 &middot; <a href="https://ggumsikpan.github.io/ggumsikman" target="_blank" className="text-white/30 hover:text-white/50 no-underline">꿈식판 꿈식맨</a></p>
+            <p className="text-white/30 text-xs mt-1">랜딩페이지 제작 &middot; <a href="https://ggumsikman.vercel.app/" target="_blank" className="text-white/30 hover:text-white/50 no-underline">꿈식판 꿈식맨</a></p>
           </div>
         </div>
       </footer>
